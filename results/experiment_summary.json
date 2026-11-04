@@ -1,5 +1,5 @@
 {
-  "schema_version": 1,
+  "schema_version": 2,
   "seed": 2026,
   "generator": {
     "instances_per_probability": 1000,
@@ -18,10 +18,19 @@
       "y",
       "z"
     ],
+    "self_attacks": true,
     "attack_sampling": "Each ordered pair, including self-attacks, is sampled independently with probability p.",
     "agent_partition": "Arguments are assigned uniformly at random to x, y, and z, conditioned on each agent receiving at least one argument.",
     "utility": "Number of arguments in the agent's true type that occur in the grounded outcome.",
-    "strategyproof_test": "Truthful report is compared with every subset report against every combination of other-agent reports."
+    "strategyproof_test": "Truthful report is compared with every subset report against every combination of other-agent reports.",
+    "theorem54_reading": "Odd walk (vertices may repeat); the simple-path reading is reported alongside."
+  },
+  "q3_category_titles": {
+    "neutralised_indirect_path": "Live indirect odd path neutralised (Example 5.11 type)",
+    "direct_conflicts_only": "Only direct conflicts between own arguments",
+    "odd_cycles_only": "Only odd cycles back to the same argument",
+    "dead_victims_only": "Every target can never be accepted",
+    "self_attacking_victims_only": "Every target attacks itself"
   },
   "results": [
     {
@@ -33,10 +42,20 @@
         0.5471483343234702,
         0.6082546913527831
       ],
+      "self_attack_instances": 689,
       "theorem54_condition_count": 39,
       "theorem54_condition_fraction": 0.039,
+      "theorem54_condition_simple_path_count": 39,
       "condition_true_but_not_strategyproof": 0,
+      "condition_true_but_not_strategyproof_simple_path": 0,
       "condition_false_but_strategyproof": 539,
+      "q3_categories": {
+        "neutralised_indirect_path": 166,
+        "direct_conflicts_only": 261,
+        "odd_cycles_only": 8,
+        "dead_victims_only": 0,
+        "self_attacking_victims_only": 104
+      },
       "argument_count_distribution": {
         "6": 325,
         "7": 344,
@@ -52,10 +71,20 @@
         0.24822587402252644,
         0.30349616729597334
       ],
+      "self_attack_instances": 859,
       "theorem54_condition_count": 5,
       "theorem54_condition_fraction": 0.005,
+      "theorem54_condition_simple_path_count": 5,
       "condition_true_but_not_strategyproof": 0,
+      "condition_true_but_not_strategyproof_simple_path": 0,
       "condition_false_but_strategyproof": 270,
+      "q3_categories": {
+        "neutralised_indirect_path": 150,
+        "direct_conflicts_only": 64,
+        "odd_cycles_only": 11,
+        "dead_victims_only": 0,
+        "self_attacking_victims_only": 45
+      },
       "argument_count_distribution": {
         "6": 360,
         "7": 347,
@@ -71,10 +100,20 @@
         0.12640395855176664,
         0.1702977329390353
       ],
+      "self_attack_instances": 955,
       "theorem54_condition_count": 0,
       "theorem54_condition_fraction": 0.0,
+      "theorem54_condition_simple_path_count": 0,
       "condition_true_but_not_strategyproof": 0,
+      "condition_true_but_not_strategyproof_simple_path": 0,
       "condition_false_but_strategyproof": 147,
+      "q3_categories": {
+        "neutralised_indirect_path": 107,
+        "direct_conflicts_only": 19,
+        "odd_cycles_only": 13,
+        "dead_victims_only": 0,
+        "self_attacking_victims_only": 8
+      },
       "argument_count_distribution": {
         "6": 336,
         "7": 343,
@@ -85,7 +124,18 @@
   "totals": {
     "instances": 3000,
     "strategyproof": 1000,
+    "self_attack_instances": 2503,
+    "theorem54_condition": 44,
+    "theorem54_condition_simple_path": 44,
     "condition_true_but_not_strategyproof": 0,
-    "condition_false_but_strategyproof": 956
+    "condition_true_but_not_strategyproof_simple_path": 0,
+    "condition_false_but_strategyproof": 956,
+    "q3_categories": {
+      "neutralised_indirect_path": 423,
+      "direct_conflicts_only": 344,
+      "odd_cycles_only": 32,
+      "dead_victims_only": 0,
+      "self_attacking_victims_only": 157
+    }
   }
 }

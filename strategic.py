@@ -347,24 +347,99 @@ def find_odd_length_path(
     return tuple(reversed(path_reversed))
 
 
+def find_odd_simple_path(
+    framework: ArgumentationFramework,
+    source: Argument,
+    target: Argument,
+) -> tuple[Argument, ...] | None:
+    """Find an odd-length directed path that never repeats a vertex.
+
+    When ``source == target`` the result is an odd simple cycle through
+    ``source`` (a self-attack is the length-1 case). The search is a
+    depth-first enumeration, exponential in the worst case but instant for
+    the graph sizes in this assignment.
+    """
+
+    framework.attackers_of(source)
+    framework.attackers_of(target)
+
+    outgoing: dict[Argument, tuple[Argument, ...]] = {
+        argument: () for argument in framework.arguments
+    }
+    for argument in framework.arguments:
+        outgoing[argument] = _ordered(
+            attacked for attacker, attacked in framework.attacks if attacker == argument
+        )
+
+    stack: list[tuple[Argument, ...]] = [(source,)]
+    while stack:
+        path = stack.pop()
+        for attacked in reversed(outgoing[path[-1]]):
+            edges = len(path)
+            if attacked == target and edges % 2 == 1:
+                return path + (attacked,)
+            if attacked not in path:
+                stack.append(path + (attacked,))
+    return None
+
+
+_PATH_FINDERS = {"walk": find_odd_length_path, "simple": find_odd_simple_path}
+
+
+def _path_finder(reading: str):
+    try:
+        return _PATH_FINDERS[reading]
+    except KeyError:
+        raise ValueError("reading must be 'walk' or 'simple'.") from None
+
+
+def odd_path_witnesses(
+    framework: ArgumentationFramework,
+    agent_types: AgentTypes,
+    reading: str = "walk",
+) -> tuple[OddPathWitness, ...]:
+    """Return one witness for every owned pair ``(a, b)`` with ``a`` ↪ ``b``.
+
+    ``reading`` selects how "odd-length path" is interpreted: ``"walk"``
+    allows repeated vertices, ``"simple"`` forbids them.
+    """
+
+    types = _normalize_agent_types(framework, agent_types)
+    find = _path_finder(reading)
+    witnesses: list[OddPathWitness] = []
+    for agent in _ordered(types):
+        arguments = _ordered(types[agent])
+        for source in arguments:
+            for target in arguments:
+                path = find(framework, source, target)
+                if path is not None:
+                    witnesses.append(OddPathWitness(agent, source, target, path))
+    return tuple(witnesses)
+
+
 def check_theorem_5_4(
     framework: ArgumentationFramework,
     agent_types: AgentTypes,
+    reading: str = "walk",
 ) -> Theorem54Result:
     """Check Theorem 5.4's condition for every pair in every agent type.
 
     The condition holds exactly when no agent owns a pair ``(a, b)`` with an
-    odd-length directed walk from ``a`` to ``b`` in the full framework.
+    odd-length directed path from ``a`` to ``b`` in the full framework. Pairs
+    with ``a == b`` are included, so self-attacks and odd cycles through an
+    owned argument violate the condition. See ``odd_path_witnesses`` for the
+    meaning of ``reading``.
     """
 
     types = _normalize_agent_types(framework, agent_types)
+    find = _path_finder(reading)
     pairs_checked = 0
     for agent in _ordered(types):
         arguments = _ordered(types[agent])
         for source in arguments:
             for target in arguments:
                 pairs_checked += 1
-                path = find_odd_length_path(framework, source, target)
+                path = find(framework, source, target)
                 if path is not None:
                     return Theorem54Result(
                         condition_holds=False,
@@ -392,5 +467,7 @@ __all__ = [
     "check_theorem_5_3",
     "check_theorem_5_4",
     "find_odd_length_path",
+    "find_odd_simple_path",
     "grounded_direct_argumentation_mechanism",
+    "odd_path_witnesses",
 ]

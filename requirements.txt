@@ -1,0 +1,2 @@
+# Only the Streamlit demo (app.py) needs these; the engine, tests and experiments use the standard library.
+streamlit>=1.50

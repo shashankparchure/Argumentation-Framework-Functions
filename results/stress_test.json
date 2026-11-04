@@ -1,0 +1,15 @@
+{
+  "seed": 2026,
+  "self_attacks": false,
+  "instances_sampled": 53955,
+  "condition_holding_instances": 3000,
+  "condition_holding_by_p": {
+    "0.15": 2401,
+    "0.25": 520,
+    "0.35": 79
+  },
+  "walk_condition_holds": 3000,
+  "not_strategyproof": 0,
+  "not_strategyproof_with_walk_condition": 0,
+  "violations": []
+}

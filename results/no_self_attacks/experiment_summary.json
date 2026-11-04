@@ -1,0 +1,141 @@
+{
+  "schema_version": 2,
+  "seed": 2026,
+  "generator": {
+    "instances_per_probability": 1000,
+    "probabilities": [
+      0.15,
+      0.25,
+      0.35
+    ],
+    "argument_count_choices": [
+      6,
+      7,
+      8
+    ],
+    "agents": [
+      "x",
+      "y",
+      "z"
+    ],
+    "self_attacks": false,
+    "attack_sampling": "Each ordered pair of distinct arguments is sampled independently with probability p.",
+    "agent_partition": "Arguments are assigned uniformly at random to x, y, and z, conditioned on each agent receiving at least one argument.",
+    "utility": "Number of arguments in the agent's true type that occur in the grounded outcome.",
+    "strategyproof_test": "Truthful report is compared with every subset report against every combination of other-agent reports.",
+    "theorem54_reading": "Odd walk (vertices may repeat); the simple-path reading is reported alongside."
+  },
+  "q3_category_titles": {
+    "neutralised_indirect_path": "Live indirect odd path neutralised (Example 5.11 type)",
+    "direct_conflicts_only": "Only direct conflicts between own arguments",
+    "odd_cycles_only": "Only odd cycles back to the same argument",
+    "dead_victims_only": "Every target can never be accepted",
+    "self_attacking_victims_only": "Every target attacks itself"
+  },
+  "results": [
+    {
+      "p": 0.15,
+      "instances": 1000,
+      "strategyproof_count": 641,
+      "strategyproof_fraction": 0.641,
+      "strategyproof_ci95": [
+        0.6107804510612619,
+        0.6701404030458117
+      ],
+      "self_attack_instances": 0,
+      "theorem54_condition_count": 138,
+      "theorem54_condition_fraction": 0.138,
+      "theorem54_condition_simple_path_count": 138,
+      "condition_true_but_not_strategyproof": 0,
+      "condition_true_but_not_strategyproof_simple_path": 0,
+      "condition_false_but_strategyproof": 503,
+      "q3_categories": {
+        "neutralised_indirect_path": 157,
+        "direct_conflicts_only": 346,
+        "odd_cycles_only": 0,
+        "dead_victims_only": 0,
+        "self_attacking_victims_only": 0
+      },
+      "argument_count_distribution": {
+        "6": 325,
+        "7": 344,
+        "8": 331
+      }
+    },
+    {
+      "p": 0.25,
+      "instances": 1000,
+      "strategyproof_count": 320,
+      "strategyproof_fraction": 0.32,
+      "strategyproof_ci95": [
+        0.2918240089814416,
+        0.34955362407335827
+      ],
+      "self_attack_instances": 0,
+      "theorem54_condition_count": 33,
+      "theorem54_condition_fraction": 0.033,
+      "theorem54_condition_simple_path_count": 33,
+      "condition_true_but_not_strategyproof": 0,
+      "condition_true_but_not_strategyproof_simple_path": 0,
+      "condition_false_but_strategyproof": 287,
+      "q3_categories": {
+        "neutralised_indirect_path": 155,
+        "direct_conflicts_only": 131,
+        "odd_cycles_only": 1,
+        "dead_victims_only": 0,
+        "self_attacking_victims_only": 0
+      },
+      "argument_count_distribution": {
+        "6": 360,
+        "7": 347,
+        "8": 293
+      }
+    },
+    {
+      "p": 0.35,
+      "instances": 1000,
+      "strategyproof_count": 114,
+      "strategyproof_fraction": 0.114,
+      "strategyproof_ci95": [
+        0.09576165709721693,
+        0.13519260045363163
+      ],
+      "self_attack_instances": 0,
+      "theorem54_condition_count": 4,
+      "theorem54_condition_fraction": 0.004,
+      "theorem54_condition_simple_path_count": 4,
+      "condition_true_but_not_strategyproof": 0,
+      "condition_true_but_not_strategyproof_simple_path": 0,
+      "condition_false_but_strategyproof": 110,
+      "q3_categories": {
+        "neutralised_indirect_path": 84,
+        "direct_conflicts_only": 26,
+        "odd_cycles_only": 0,
+        "dead_victims_only": 0,
+        "self_attacking_victims_only": 0
+      },
+      "argument_count_distribution": {
+        "6": 336,
+        "7": 343,
+        "8": 321
+      }
+    }
+  ],
+  "totals": {
+    "instances": 3000,
+    "strategyproof": 1075,
+    "self_attack_instances": 0,
+    "theorem54_condition": 175,
+    "theorem54_condition_simple_path": 175,
+    "condition_true_but_not_strategyproof": 0,
+    "condition_true_but_not_strategyproof_simple_path": 0,
+    "condition_false_but_strategyproof": 900,
+    "q3_categories": {
+      "neutralised_indirect_path": 396,
+      "direct_conflicts_only": 503,
+      "odd_cycles_only": 1,
+      "dead_victims_only": 0,
+      "self_attacking_victims_only": 0
+    }
+  }
+}
