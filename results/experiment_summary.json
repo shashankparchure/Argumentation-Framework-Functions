@@ -1,0 +1,91 @@
+{
+  "schema_version": 1,
+  "seed": 2026,
+  "generator": {
+    "instances_per_probability": 1000,
+    "probabilities": [
+      0.15,
+      0.25,
+      0.35
+    ],
+    "argument_count_choices": [
+      6,
+      7,
+      8
+    ],
+    "agents": [
+      "x",
+      "y",
+      "z"
+    ],
+    "attack_sampling": "Each ordered pair, including self-attacks, is sampled independently with probability p.",
+    "agent_partition": "Arguments are assigned uniformly at random to x, y, and z, conditioned on each agent receiving at least one argument.",
+    "utility": "Number of arguments in the agent's true type that occur in the grounded outcome.",
+    "strategyproof_test": "Truthful report is compared with every subset report against every combination of other-agent reports."
+  },
+  "results": [
+    {
+      "p": 0.15,
+      "instances": 1000,
+      "strategyproof_count": 578,
+      "strategyproof_fraction": 0.578,
+      "strategyproof_ci95": [
+        0.5471483343234702,
+        0.6082546913527831
+      ],
+      "theorem54_condition_count": 39,
+      "theorem54_condition_fraction": 0.039,
+      "condition_true_but_not_strategyproof": 0,
+      "condition_false_but_strategyproof": 539,
+      "argument_count_distribution": {
+        "6": 325,
+        "7": 344,
+        "8": 331
+      }
+    },
+    {
+      "p": 0.25,
+      "instances": 1000,
+      "strategyproof_count": 275,
+      "strategyproof_fraction": 0.275,
+      "strategyproof_ci95": [
+        0.24822587402252644,
+        0.30349616729597334
+      ],
+      "theorem54_condition_count": 5,
+      "theorem54_condition_fraction": 0.005,
+      "condition_true_but_not_strategyproof": 0,
+      "condition_false_but_strategyproof": 270,
+      "argument_count_distribution": {
+        "6": 360,
+        "7": 347,
+        "8": 293
+      }
+    },
+    {
+      "p": 0.35,
+      "instances": 1000,
+      "strategyproof_count": 147,
+      "strategyproof_fraction": 0.147,
+      "strategyproof_ci95": [
+        0.12640395855176664,
+        0.1702977329390353
+      ],
+      "theorem54_condition_count": 0,
+      "theorem54_condition_fraction": 0.0,
+      "condition_true_but_not_strategyproof": 0,
+      "condition_false_but_strategyproof": 147,
+      "argument_count_distribution": {
+        "6": 336,
+        "7": 343,
+        "8": 321
+      }
+    }
+  ],
+  "totals": {
+    "instances": 3000,
+    "strategyproof": 1000,
+    "condition_true_but_not_strategyproof": 0,
+    "condition_false_but_strategyproof": 956
+  }
+}
